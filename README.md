@@ -1,75 +1,209 @@
-# UMLforge – UML Diagram to Code
+# 🚀 UML to Code Generator
 
-Convert UML class diagrams into C, C++, Python, or Java code using Claude (Anthropic API).
+A full-stack web application that converts **UML diagrams into production-ready code** using AI.
+
+Users can upload a UML diagram image, select a target programming language, and instantly generate structured code based on the diagram.
 
 ---
 
-## Project Structure
+## 🌟 Features
+
+- 📤 Upload UML diagram (PNG, JPG, WEBP, GIF)
+- 🧠 AI-powered code generation using Google Gemini API
+- 💻 Supports multiple languages:
+  - Python 🐍
+  - C++ ⚙️
+  - C 🔧
+  - Java ☕
+- 🎯 Generates clean, structured, OOP-based code
+- 📋 Copy to clipboard functionality
+- ⬇️ Download generated code
+- 🎨 Modern UI with drag-and-drop support
+- ⚡ FastAPI backend with REST API
+- 🌐 Fully deployable (Render + Vercel)
+
+---
+
+## 🏗️ Tech Stack
+
+### Frontend
+- React (Vite)
+- CSS (Custom UI styling)
+
+### Backend
+- FastAPI (Python)
+- Google Gemini REST API
+- Requests
+
+### Deployment
+- Frontend → Vercel
+- Backend → Render
+
+---
+
+## 📂 Project Structure
 
 ```
-uml2code/
+UML-Code-Generator/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── Editor.jsx
+│   │   ├── main.jsx
+│   │   ├── App.css
+│   │   └── index.css
+│   ├── index.html
+│   └── package.json
+│
 ├── backend/
-│   ├── main.py            # FastAPI server
-│   └── requirements.txt
-└── frontend/
-    ├── index.html
-    ├── package.json
-    ├── vite.config.js
-    └── src/
-        ├── main.jsx
-        ├── App.jsx
-        ├── App.css
-        └── Editor.jsx
+│   ├── main.py
+│   ├── requirements.txt
+│   └── .env
+│
+└── README.md
 ```
 
 ---
 
-## Prerequisites
+## ⚙️ Setup Instructions
 
-- Python 3.10+
-- Node.js 18+
-- An **Anthropic API key** (get one at https://console.anthropic.com)
+### 🔹 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/UML2Code.git
+cd UML2Code
+```
 
 ---
 
-## Setup & Run
-
-### 1. Backend (FastAPI)
+## 🔹 2. Backend Setup
 
 ```bash
 cd backend
 pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
 ```
 
-Backend runs at: http://localhost:8000
+### Create `.env`
 
-### 2. Frontend (React + Vite)
+```
+GOOGLE_API_KEY=your_api_key_here
+```
+
+### Run server
+
+```bash
+uvicorn main:app --reload
+```
+
+👉 Backend runs on: `http://127.0.0.1:8000`
+
+---
+
+## 🔹 3. Frontend Setup
 
 ```bash
 cd frontend
 npm install
+```
+
+### Create `.env`
+
+```
+VITE_API_URL=http://127.0.0.1:8000
+```
+
+### Run frontend
+
+```bash
 npm run dev
 ```
 
-Frontend runs at: http://localhost:3000
+👉 Frontend runs on: `http://localhost:5173`
 
 ---
 
-## Usage
+## 🌐 Deployment
 
-1. Open http://localhost:3000 in your browser
-2. Enter your **API KEY** in the input field
-3. Select your **target language** (Python, C++, C, or Java)
-4. Upload a **UML class diagram** (PNG, JPG, WEBP, or GIF)
-5. Click **Generate Code**
-6. Copy or download the generated code
+### Backend (Render)
+
+- Connect GitHub repo
+- Add environment variable:
+  ```
+  GOOGLE_API_KEY=your_key
+  ```
+- Start command:
+  ```
+  uvicorn main:app --host 0.0.0.0 --port 10000
+  ```
 
 ---
 
-## Notes
+### Frontend (Vercel)
 
-- Your API key is **never stored** — it's sent directly to LLM per request
-- The app uses `auto` model which supports vision (image input)
-- Supports UML class diagrams with classes, interfaces, inheritance, associations, etc.
-- The built-in syntax highlighter covers keywords, strings, comments, and numbers for all 4 languages
+- Import repo
+- Add environment variable:
+  ```
+  VITE_API_URL=https://your-backend.onrender.com
+  ```
+
+---
+
+## 🔐 Security
+
+- API keys are stored securely using environment variables
+- `.env` is excluded via `.gitignore`
+- No sensitive data is exposed to frontend
+
+---
+
+## 🧠 How It Works
+
+1. User uploads UML diagram
+2. Image is sent to FastAPI backend
+3. Backend encodes image in base64
+4. Gemini API analyzes diagram
+5. AI generates structured code
+6. Code is returned and displayed in UI
+
+---
+
+## ⚠️ Limitations
+
+- Accuracy depends on clarity of UML diagram
+- Complex diagrams may need refinement
+- Free-tier deployment may have cold start delays
+
+---
+
+## 🚀 Future Improvements
+
+- 📁 Multi-file project generation
+- 🧠 Code explanation & suggestions
+- 🎨 Monaco editor integration (VS Code UI)
+- 📦 Download as ZIP project
+- 🌍 Custom domain deployment
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first.
+
+---
+
+## 📜 License
+
+This project is open-source and available under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+**Shivansh Saxena**
+
+---
+
+## 💼 Resume Line
+
+Built a full-stack AI-powered application that converts UML diagrams into structured code using FastAPI, React, and Google Gemini API, deployed on Render and Vercel.
